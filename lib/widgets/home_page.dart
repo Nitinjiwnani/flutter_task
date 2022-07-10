@@ -16,10 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
       'Dashboard',
       style: optionStyle,
     ),
-    Text(
-      'Classes',
-      style: optionStyle,
-    ),
+    HomePage(),
     Text(
       'Profile',
       style: optionStyle,
@@ -35,46 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('FeesBook'),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.greenAccent,
-              ),
-              child: Text(
-                'FeesBook',
-                style: TextStyle(fontSize: 30.0),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.details),
-              title: const Text('About Us'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: const Text('Logout'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -98,5 +55,101 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: _onItemTapped,
       ),
     );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(children: [
+      Container(
+        padding: const EdgeInsets.only(top: 70, left: 20),
+        child: Row(
+          children: [
+            Icon(Icons.arrow_back, size: 30, color: Colors.black54),
+            Expanded(child: Container()),
+            Column(
+              children: <Widget>[
+                Container(
+                  margin: const EdgeInsets.only(right: 180),
+                  decoration: BoxDecoration(),
+                  child: Text(
+                    "Class 12th (6AM)",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 238),
+                  decoration: BoxDecoration(),
+                  child: Text(
+                    "View Full Report >",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color.fromARGB(255, 17, 149, 22),
+                      fontWeight: FontWeight.w200,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      Container(
+        padding: const EdgeInsets.only(top: 70, left: 20),
+        child: Row(
+          children: [
+            Expanded(child: Container()),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: 105,
+                  height: 80,
+                  margin: const EdgeInsets.only(right: 180),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 235, 129, 129),
+                      borderRadius: BorderRadius.circular(2)),
+                  child: Text(
+                    "Pending Fees",
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                Container(
+                  width: 105,
+                  height: 80,
+                  margin: const EdgeInsets.only(right: 180),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 132, 216, 135),
+                      borderRadius: BorderRadius.circular(2)),
+                  child: Text(
+                    "Total Collected",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Color.fromARGB(255, 17, 149, 22),
+                      fontWeight: FontWeight.w200,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ]));
   }
 }
